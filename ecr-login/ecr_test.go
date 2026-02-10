@@ -19,8 +19,8 @@ import (
 	"os"
 	"testing"
 
-	ecr "github.com/awslabs/amazon-ecr-credential-helper/ecr-login/api"
-	mock_api "github.com/awslabs/amazon-ecr-credential-helper/ecr-login/mocks"
+	ecr "github.com/kingavatar/amazon-ecr-credential-helper/ecr-login/api"
+	mock_api "github.com/kingavatar/amazon-ecr-credential-helper/ecr-login/mocks"
 	"github.com/docker/docker-credential-helpers/credentials"
 	"github.com/stretchr/testify/assert"
 )

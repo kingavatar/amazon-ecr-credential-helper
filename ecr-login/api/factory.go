@@ -22,8 +22,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/ecrpublic"
 	"github.com/aws/smithy-go/middleware"
 	"github.com/aws/smithy-go/transport/http"
-	"github.com/awslabs/amazon-ecr-credential-helper/ecr-login/cache"
-	"github.com/awslabs/amazon-ecr-credential-helper/ecr-login/version"
+	"github.com/kingavatar/amazon-ecr-credential-helper/ecr-login/cache"
+	"github.com/kingavatar/amazon-ecr-credential-helper/ecr-login/version"
 )
 
 // Options makes the constructors more configurable

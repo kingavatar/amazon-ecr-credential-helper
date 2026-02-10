@@ -21,8 +21,8 @@ import (
 
 	"github.com/sirupsen/logrus"
 
-	"github.com/awslabs/amazon-ecr-credential-helper/ecr-login/api"
-	"github.com/awslabs/amazon-ecr-credential-helper/ecr-login/config"
+	"github.com/kingavatar/amazon-ecr-credential-helper/ecr-login/api"
+	"github.com/kingavatar/amazon-ecr-credential-helper/ecr-login/config"
 	"github.com/docker/docker-credential-helpers/credentials"
 )
 

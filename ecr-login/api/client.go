@@ -28,8 +28,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/ecrpublic"
 	"github.com/sirupsen/logrus"
 
-	"github.com/awslabs/amazon-ecr-credential-helper/ecr-login/cache"
-	"github.com/awslabs/amazon-ecr-credential-helper/ecr-login/config"
+	"github.com/kingavatar/amazon-ecr-credential-helper/ecr-login/cache"
+	"github.com/kingavatar/amazon-ecr-credential-helper/ecr-login/config"
 )
 
 const (

@@ -23,7 +23,7 @@ mkdir -p $1
 
 cd "${ROOT}/ecr-login"
 
-package_root="github.com/awslabs/amazon-ecr-credential-helper/ecr-login"
+package_root="github.com/kingavatar/amazon-ecr-credential-helper/ecr-login"
 
 version_ldflags=""
 if [[ -n "${2}" ]]; then

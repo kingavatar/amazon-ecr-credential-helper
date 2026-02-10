@@ -14,7 +14,7 @@
 package mock_cache
 
 import (
-	"github.com/awslabs/amazon-ecr-credential-helper/ecr-login/cache"
+	"github.com/kingavatar/amazon-ecr-credential-helper/ecr-login/cache"
 )
 
 type MockCredentialsCache struct {

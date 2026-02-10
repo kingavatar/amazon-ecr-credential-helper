@@ -16,7 +16,7 @@
 # for execution in AWS CodeBuild in the golang container image.
 
 
-if [[ ! -d "/go/src/github.com/awslabs/amazon-ecr-credential-helper" ]]; then
-	mkdir -p "/go/src/github.com/awslabs"
-	ln -s "$(pwd)" "/go/src/github.com/awslabs/amazon-ecr-credential-helper"
+if [[ ! -d "/go/src/github.com/kingavatar/amazon-ecr-credential-helper" ]]; then
+	mkdir -p "/go/src/github.com/kingavatar"
+	ln -s "$(pwd)" "/go/src/github.com/kingavatar/amazon-ecr-credential-helper"
 fi

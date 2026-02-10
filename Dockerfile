@@ -13,7 +13,7 @@
 
 FROM public.ecr.aws/docker/library/golang:1.25-alpine
 
-WORKDIR /go/src/github.com/awslabs/amazon-ecr-credential-helper
+WORKDIR /go/src/github.com/kingavatar/amazon-ecr-credential-helper
 
 COPY ./scripts/container_init.sh /setup/container_init.sh
 

@@ -27,9 +27,9 @@ import (
 	ecrtypes "github.com/aws/aws-sdk-go-v2/service/ecr/types"
 	"github.com/aws/aws-sdk-go-v2/service/ecrpublic"
 	ecrpublictypes "github.com/aws/aws-sdk-go-v2/service/ecrpublic/types"
-	mock_api "github.com/awslabs/amazon-ecr-credential-helper/ecr-login/api/mocks"
-	"github.com/awslabs/amazon-ecr-credential-helper/ecr-login/cache"
-	mock_cache "github.com/awslabs/amazon-ecr-credential-helper/ecr-login/cache/mocks"
+	mock_api "github.com/kingavatar/amazon-ecr-credential-helper/ecr-login/api/mocks"
+	"github.com/kingavatar/amazon-ecr-credential-helper/ecr-login/cache"
+	mock_cache "github.com/kingavatar/amazon-ecr-credential-helper/ecr-login/cache/mocks"
 	"github.com/stretchr/testify/assert"
 )
 

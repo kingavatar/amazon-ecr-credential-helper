@@ -18,9 +18,9 @@ import (
 	"fmt"
 	"os"
 
-	ecr "github.com/awslabs/amazon-ecr-credential-helper/ecr-login"
-	"github.com/awslabs/amazon-ecr-credential-helper/ecr-login/config"
-	"github.com/awslabs/amazon-ecr-credential-helper/ecr-login/version"
+	ecr "github.com/kingavatar/amazon-ecr-credential-helper/ecr-login"
+	"github.com/kingavatar/amazon-ecr-credential-helper/ecr-login/config"
+	"github.com/kingavatar/amazon-ecr-credential-helper/ecr-login/version"
 	"github.com/docker/docker-credential-helpers/credentials"
 )
 
@@ -32,7 +32,7 @@ Git commit: %s
 func init() {
 	// Set up version information in docker-credential-helpers package
 	credentials.Name = "docker-credential-ecr-login"
-	credentials.Package = "github.com/awslabs/amazon-ecr-credential-helper/ecr-login"
+	credentials.Package = "github.com/kingavatar/amazon-ecr-credential-helper/ecr-login"
 	credentials.Version = version.Version
 	credentials.Revision = version.GitCommitSHA
 }

@@ -24,7 +24,7 @@ import (
 	"github.com/mitchellh/go-homedir"
 	"github.com/sirupsen/logrus"
 
-	ecrconfig "github.com/awslabs/amazon-ecr-credential-helper/ecr-login/config"
+	ecrconfig "github.com/kingavatar/amazon-ecr-credential-helper/ecr-login/config"
 )
 
 func BuildCredentialsCache(config aws.Config, cacheDir string) CredentialsCache {

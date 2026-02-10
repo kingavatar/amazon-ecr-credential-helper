@@ -7,7 +7,7 @@ phases:
       - ./scripts/container_init.sh
       - ./scripts/hack/codepipeline-git-commit.sh
       - ./scripts/hack/symlink-gopath-codebuild.sh
-      - cd /go/src/github.com/awslabs/amazon-ecr-credential-helper
+      - cd /go/src/github.com/kingavatar/amazon-ecr-credential-helper
   pre_build:
     commands:
       - echo "Starting tests..."

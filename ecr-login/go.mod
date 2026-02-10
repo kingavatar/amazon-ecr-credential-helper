@@ -1,4 +1,4 @@
-module github.com/awslabs/amazon-ecr-credential-helper/ecr-login
+module github.com/kingavatar/amazon-ecr-credential-helper/ecr-login
 
 go 1.23
 

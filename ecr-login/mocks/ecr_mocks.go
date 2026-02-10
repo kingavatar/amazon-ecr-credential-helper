@@ -15,7 +15,7 @@ package mock_api
 
 import (
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/awslabs/amazon-ecr-credential-helper/ecr-login/api"
+	"github.com/kingavatar/amazon-ecr-credential-helper/ecr-login/api"
 )
 
 type MockClientFactory struct {

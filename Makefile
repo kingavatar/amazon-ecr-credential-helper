@@ -41,7 +41,7 @@ docker: build-in-docker
 		--user $(UID):$(GID) \
 		--env TARGET_GOOS=$(TARGET_GOOS) \
 		--env TARGET_GOARCH=$(TARGET_GOARCH) \
-		--volume $(ROOT):/go/src/github.com/awslabs/amazon-ecr-credential-helper \
+		--volume $(ROOT):/go/src/github.com/kingavatar/amazon-ecr-credential-helper \
 		$(shell docker build -q .) \
 		make $(subst -in-docker,,$@)
 
