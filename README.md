@@ -11,6 +11,36 @@ The Amazon ECR Docker Credential Helper is a
 for the Docker daemon that makes it easier to use
 [Amazon Elastic Container Registry](https://aws.amazon.com/ecr/).
 
+## Personal Fork - XDG Compliance
+
+This is a personal fork of [awslabs/amazon-ecr-credential-helper](https://github.com/awslabs/amazon-ecr-credential-helper) with changes to comply with the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/latest/).
+
+### Changes from Upstream
+
+**Cache Directory:**
+- Upstream: `~/.ecr`
+- This fork: `$XDG_CACHE_HOME/docker-credential-ecr-login` (typically `~/.cache/docker-credential-ecr-login`)
+- Logs: `$XDG_CACHE_HOME/docker-credential-ecr-login/log`
+
+**Override Options:**
+You can still use `AWS_ECR_CACHE_DIR` to set a custom cache directory.
+
+**Platform Support:**
+- **Linux/macOS**: Full XDG spec compliance
+- **Windows**: Uses `~/.ecr` (no XDG standard)
+
+### Migration from Upstream
+
+If upgrading from upstream version, you may want to migrate your cache:
+
+```bash
+# Backup existing cache (optional, as cached tokens will be re-fetched)
+mv ~/.ecr ~/.ecr.backup
+
+# The helper will automatically create new XDG-compliant paths
+# Your cached credentials will be re-fetched on next use
+```
+
 ## Table of Contents
 
   * [Prerequisites](#prerequisites)
@@ -147,7 +177,7 @@ A community-maintained package is available in the [Alpine Linux aports Reposito
 ```bash
 apk add docker-credential-ecr-login
 ```
-> [!NOTE] 
+> [!NOTE]
 > Badge only shows edge, check [repository](https://pkgs.alpinelinux.org/packages?name=docker-credential-ecr-login) for stable releases or add `--repository=http://dl-cdn.alpinelinux.org/alpine/edge/community`
 
 Once you have installed the credential helper, see the
@@ -214,36 +244,6 @@ Once you have installed the credential helper, see the
 [Configuration section](#configuration) for instructions on how to configure
 Docker to work with the helper.
 
-## Personal Fork - XDG Compliance
-
-This is a personal fork of [awslabs/amazon-ecr-credential-helper](https://github.com/awslabs/amazon-ecr-credential-helper) with changes to comply with the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/latest/).
-
-### Changes from Upstream
-
-**Cache Directory:**
-- Upstream: `~/.ecr`
-- This fork: `$XDG_CACHE_HOME/docker-credential-ecr-login` (typically `~/.cache/docker-credential-ecr-login`)
-- Logs: `$XDG_CACHE_HOME/docker-credential-ecr-login/log`
-
-**Override Options:**
-You can still use `AWS_ECR_CACHE_DIR` to set a custom cache directory.
-
-**Platform Support:**
-- **Linux/macOS**: Full XDG spec compliance
-- **Windows**: Uses `~/.ecr` (no XDG standard)
-
-### Migration from Upstream
-
-If upgrading from upstream version, you may want to migrate your cache:
-
-```bash
-# Backup existing cache (optional, as cached tokens will be re-fetched)
-mv ~/.ecr ~/.ecr.backup
-
-# The helper will automatically create new XDG-compliant paths
-# Your cached credentials will be re-fetched on next use
-```
-
 ## Configuration
 
 ### Docker
@@ -255,11 +255,11 @@ On Windows, depending on whether the executable is ran in the User or System con
 
 Following that the configuration for the docker client needs to be updated in `~/.docker/config.json` to use the **ecr-login** helper.
 Depending on the operating system and context under which docker client will be executed, this configuration can be found in different places.
-  
+
 On Linux systems:
 - `/home/<username>/.docker/config.json` for **user** context
 - `/root/.docker/config.json` for **root** context
-  
+
 On Windows:
 - `C:\Users\<username>\.docker\config.json` for **user** context
 - `C:\Windows\System32\config\systemprofile\.docker\config.json` for the **SYSTEM** context
@@ -388,18 +388,18 @@ For more information about Amazon ECR, see the the
 
 Features marked as experimental are optionally made available to users to test and provide feedback.
 
-If you test any experimental feaures, you can give feedback via the feature's tracking issue regarding:
+If you test any experimental features, you can give feedback via the feature's tracking issue regarding:
 * Your experience with the feature
 * Issues or problems
 * Suggested improvements
 
 Experimental features are incomplete in design and implementation. Backwards incompatible
-changes may be introduced at any time or support dropped entirely. Therefore experimental 
+changes may be introduced at any time or support dropped entirely. Therefore experimental
 features are **not recommended** for use in production environments.
 
 ## Security disclosures
 
-If you think you’ve found a potential security issue, please do not post it in the Issues.  Instead, please follow the instructions [here](https://aws.amazon.com/security/vulnerability-reporting/) or [email AWS security directly](mailto:aws-security@amazon.com).
+If you think you've found a potential security issue, please do not post it in the Issues.  Instead, please follow the instructions [here](https://aws.amazon.com/security/vulnerability-reporting/) or [email AWS security directly](mailto:aws-security@amazon.com).
 
 ## License
 
