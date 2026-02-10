@@ -13,11 +13,29 @@
 
 package config
 
-import "os"
+import (
+	"os"
+	"path/filepath"
+	"runtime"
+)
 
 func GetCacheDir() string {
 	if cacheDir := os.Getenv("AWS_ECR_CACHE_DIR"); cacheDir != "" {
 		return cacheDir
 	}
-	return "~/.ecr"
+
+	if runtime.GOOS == "windows" {
+		return "~/.ecr"
+	}
+
+	if xdgCache := os.Getenv("XDG_CACHE_HOME"); xdgCache != "" {
+		return filepath.Join(xdgCache, "docker-credential-ecr-login")
+	}
+
+	home, err := os.UserHomeDir()
+	if err != nil {
+		return "~/.ecr"
+	}
+
+	return filepath.Join(home, ".cache", "docker-credential-ecr-login")
 }

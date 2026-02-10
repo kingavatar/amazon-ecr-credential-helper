@@ -214,6 +214,36 @@ Once you have installed the credential helper, see the
 [Configuration section](#configuration) for instructions on how to configure
 Docker to work with the helper.
 
+## Personal Fork - XDG Compliance
+
+This is a personal fork of [awslabs/amazon-ecr-credential-helper](https://github.com/awslabs/amazon-ecr-credential-helper) with changes to comply with the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/latest/).
+
+### Changes from Upstream
+
+**Cache Directory:**
+- Upstream: `~/.ecr`
+- This fork: `$XDG_CACHE_HOME/docker-credential-ecr-login` (typically `~/.cache/docker-credential-ecr-login`)
+- Logs: `$XDG_CACHE_HOME/docker-credential-ecr-login/log`
+
+**Override Options:**
+You can still use `AWS_ECR_CACHE_DIR` to set a custom cache directory.
+
+**Platform Support:**
+- **Linux/macOS**: Full XDG spec compliance
+- **Windows**: Uses `~/.ecr` (no XDG standard)
+
+### Migration from Upstream
+
+If upgrading from upstream version, you may want to migrate your cache:
+
+```bash
+# Backup existing cache (optional, as cached tokens will be re-fetched)
+mv ~/.ecr ~/.ecr.backup
+
+# The helper will automatically create new XDG-compliant paths
+# Your cached credentials will be re-fetched on next use
+```
+
 ## Configuration
 
 ### Docker
@@ -320,7 +350,7 @@ The credentials must have a policy applied that
 | Environment Variable         | Sample Value  | Description                                                        |
 | ---------------------------- | ------------- | ------------------------------------------------------------------ |
 | AWS_ECR_DISABLE_CACHE        | true          | Disables the local file auth cache if set to a non-empty value. When disabled, the credential helper will not store or read cached ECR authorization tokens from the local filesystem, requiring fresh credentials to be fetched from AWS for each Docker operation. This may be useful in environments where persisting credentials to disk is not desired, though it will result in additional API calls to ECR.  |
-| AWS_ECR_CACHE_DIR            | ~/.ecr        | Specifies the local file auth cache directory location             |
+| AWS_ECR_CACHE_DIR            | ~/.cache/docker-credential-ecr-login | Specifies the local file auth cache directory location. Default follows XDG spec on Linux/macOS. |
 | AWS_ECR_IGNORE_CREDS_STORAGE | true          | Ignore calls to docker login or logout and pretend they succeeded  |
 
 ## Usage
@@ -349,7 +379,7 @@ token using `docker logout 123456789012.dkr.ecr.us-west-2.amazonaws.com/my-repos
 Docker will start utilizing the ECR credential helper to fetch fresh credentials, and you will no longer
 need to use `docker login` or `docker logout`.
 
-Logs from the Amazon ECR Docker Credential Helper are stored in `~/.ecr/log`.
+Logs from the Amazon ECR Docker Credential Helper are stored in `$XDG_CACHE_HOME/docker-credential-ecr-login/log` (typically `~/.cache/docker-credential-ecr-login/log`) on Linux/macOS, or `~/.ecr/log` on Windows.
 
 For more information about Amazon ECR, see the the
 [Amazon Elastic Container Registry User Guide](http://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html).

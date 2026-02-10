@@ -1,4 +1,13 @@
-# 0.11.0
+# 0.11.0 (Personal Fork)
+* **BREAKING CHANGE**: Cache directory now follows XDG Base Directory Specification
+  - Changed from `~/.ecr` to `$XDG_CACHE_HOME/docker-credential-ecr-login` (typically `~/.cache/docker-credential-ecr-login`)
+  - Logs now at `$XDG_CACHE_HOME/docker-credential-ecr-login/log`
+  - Windows users continue to use `~/.ecr`
+  - Override with `AWS_ECR_CACHE_DIR` if needed
+* Add support for AWS EUSC partition ([#1034](https://github.com/awslabs/amazon-ecr-credential-helper/pull/1034)).
+* Upgrade dependencies.
+
+# 0.10.1
 * Add support for AWS EUSC partition ([#1034](https://github.com/awslabs/amazon-ecr-credential-helper/pull/1034)).
 * Upgrade dependencies.
 
