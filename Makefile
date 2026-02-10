@@ -33,6 +33,8 @@ DARWIN_ARM64_BINARY=$(BINPATH)/darwin-arm64/$(BINARY_NAME)
 WINDOWS_AMD64_BINARY=$(BINPATH)/windows-amd64/$(BINARY_NAME).exe
 WINDOWS_ARM64_BINARY=$(BINPATH)/windows-arm64/$(BINARY_NAME).exe
 
+include Makefile.amazonlinux
+
 .PHONY: docker
 docker: build-in-docker
 
@@ -123,7 +125,7 @@ licenses:
 	./scripts/build_third_party_licenses.sh
 
 .PHONY: clean
-clean:
+clean: .clean-amazonlinux
 	- rm -rf ./bin
 	- rm -f GITCOMMIT_SHA
 	- rm -f release.tar.gz
